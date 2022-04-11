@@ -1,0 +1,286 @@
+ /* Box sizing so that the padding stays within the box model and not to make the width bigger
+  */
+*{
+    box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+  background-color: rgb(250, 245, 243);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* for the taking the whole page of the browser we use vh */
+  height: 100vh;
+  margin: -20px 0 50px;
+}
+ 
+/* Headings */
+h2{
+  margin: 0;
+  font-weight: bolder;
+}
+
+/* Paragraphs */
+p{
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  margin: 20px 0 30px;
+  text-align: center;
+}
+
+b{
+  font-weight: 900;
+  color: #dfdfdf;
+}
+/* ----------------LOGO-------------------------- */
+
+#logo-img{
+  height: 50px;
+  width: 50px;
+  margin: 10px 0;
+}
+span{
+  font-size: 12px;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+/* -----------SOCIAL MEDIA ICONS------------------------- */
+
+/* Editing social icons */
+.social-container{
+  /* Margin top & bottom 20px and 0px left & right */
+  margin: 10px 0;
+}
+
+.social-container img{
+  /* border: 2px solid rgb(7, 7, 7); */
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  /* Margin 20px left & right */
+  margin: 0 5px;
+  height: 30px;
+  width: 30px;
+}
+/*------------- INPUTS AND BUTTONS ------------------------*/
+.input{
+  background-color: rgb(211, 209, 209);
+  margin: 5px 0;
+  padding: 8px 15px;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+}
+
+/* The overlay signin andd signUp buttons */
+button{
+  padding: 8px 35px;
+  border: 1px solid #ff2b4b;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  /* Transitioning to use the scale later
+  when clicked to expand a little abit */
+  transition: transform 100ms ease-in ;
+}
+
+/* Login and create account [input] buttons of classes */
+.button{
+  padding: 8px 35px;
+  background-color: #ff2b4b;
+  border: 1px solid #ff2b4b;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  /* Transitioning to use the scale later
+  when clicked to expand a little abit */
+  transition: transform 100ms ease-in ;
+}
+input .dd{
+  background-color: #ff2b4b;
+}
+
+.button:active{
+  transform: scale(0.95);
+}
+
+/* disabling/ tranparent buttons the ghost button
+Will be displayed later */
+
+button.ghost{
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+
+
+
+
+
+
+
+/* ------------FORM CONTAINERS---------------------------- */
+
+/* Positioning the form containers*/
+.form-container{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  /* Transition will enable easy transition of the diff pages on the x axis */
+  transition: all 0.6s ease-in;
+  
+}
+
+/* container */
+.container{
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(1, 1, 1, 0.6);
+  /*  Coz of need to add more data on to we use relative
+  to allow normal flow of the data -> To position some stff absolutely so we make it position relative */
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  max-width: 100%;
+  width: 768px;
+  
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  background: #eee;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+.sign-in-container{
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.sign-up-container{
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.overlay-container{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  /* overflow hidden will hide the other part say 50% will be displayed and other 50% hidden */
+  overflow: hidden;
+  transition: all 0.6s ease-in;
+  z-index: 100;
+}
+
+.overlay{
+  /* gradient */
+  background: linear-gradient(to right, #ad604f, #ff7300) no-repeat 0 0 / cover;
+
+  /* To position some stff absolutely so we make it position relative */
+  position: relative;
+  color: #ffffff;
+  height: 100%;
+  /* -left will move the other half to the left from the right */
+  left: -100%;
+  width: 200%;
+  /* transitioning along the x axis */
+  transform: translateX(0);
+  transition: transform 0.6s ease-in ;
+}
+
+
+/* working with the overlay panel */
+ .overlay-panel{
+   /* Position abolute will make one panel appear top of the other */
+   top: 0;
+   width: 50%;
+   height: 100%;
+   display: flex;
+   padding: 0 40px;
+   position: absolute;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
+   transform: translateX(0);
+  transition: transform 0.6s ease-in ;
+ }
+
+ .overlay-right{
+   right: 0;
+   transform: translateX(0);
+ }
+
+ .overlay-left{
+   transform: translateX(-20%);
+ }
+
+ /* ANIMATING THE EXCHANGE */
+
+ /* Moving signin the right when the right panel is active */
+
+ .container.right-panel-active .sign-in-container{
+   transform: translateX(100%);
+ }
+
+ /* Move overlay to the left */
+ .container.right-panel-active .overlay-container{
+  transform: translateX(-100%);
+}
+
+/* Moving the signUp over the sign in */
+.container.right-panel-active .sign-up-container{
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+
+/* Move overlay back to the right */
+.container.right-panel-active .overlay{
+  transform: translateX(50%);
+}
+
+
+.container.right-panel-active .overlay-left{
+  transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right{
+  transform: translateX(20);
+}
+
+
+
+
